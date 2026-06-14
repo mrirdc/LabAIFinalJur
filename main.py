@@ -85,8 +85,7 @@ print(confusion_matrix(y_test, y_pred))
 print("\nRaport de clasificare:")
 print(classification_report(y_test, y_pred, target_names=iris.target_names))
 
-#7.1
-
+#7.1.
 plt.scatter(x[y==0, 2], x[y==0, 3], color='red', label='Setosa')
 plt.scatter(x[y==1, 2], x[y==1, 3], color='blue', label='Versicolor')
 plt.scatter(x[y==2, 2], x[y==2, 3], color='green', label='Virginicaa')
