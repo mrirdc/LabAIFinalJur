@@ -1,62 +1,50 @@
-import pythonpy
-import tensorflow as tf
-from keras.layers import Input, Dense, Flatten
-from keras.models import Sequential
-import matplotlib.pyplot as plt
-from keras.datasets import mnist
-import numpy as np
+import random
 
-print("Tensorflow version: ", tf.__version__)
+picture = [
+[0,0,0,1,0,0,0],
+[0,0,1,1,1,0,0],
+[0,1,1,1,1,1,0],
+[1,1,1,1,1,1,1],
+[0,0,0,1,0,0,0],
+[0,0,0,1,0,0,0]]
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
-print("x_train: "+str(x_train.shape))
-print("y_train: "+str(y_train.shape))
-print("x_test: "+str(x_test.shape))
-print("y_test: "+str(y_test.shape))
-
-# x_train: (60000, 28, 28)
-#             ^      ^
-#             |     dimensiunile imaginilor (28px*28px)
-#           dimensiunea (60000 de imagini)
-# y_train: (60000,) > output???? (zice ca y reprezinta etichetele pt imagini)
-# x_test: (10000, 28, 28)
-# y_test: (10000,)
+#1
+#for row in picture:
+  #for pixel in row:
+   #     if pixel == 1:
+  #          print("*", end="")
+     #   else:
+     #       print(" ", end="")
+  # print()
 
 
-# for i in range(9):
-#     plt.subplot(330+1+i)
-#     plt.imshow(x_train[i],cmap=plt.get_cmap('gray'))
-# plt.show()
+#2
+#nota=int(input("nota:"))
+# if nota<5:
+#     print("reexaminare")
+# elif nota>=5 and nota<=6 :
+#     print("suficient")
+# elif nota>=7 and nota<=8 :
+#     print("bine")
+# elif nota >= 9 and nota <=10:
+#     print("excelent")
 
+#3
 
-model = Sequential(
-    [
-        Input((28,28)),
-        Flatten(),
-        Dense(16, activation='relu',name='hidden_layer1'),
-        Dense(16, activation='relu',name='hidden_layer2'),
-        Dense(10, activation='softmax'),
-    ]
-)
-
-model.compile(optimizer='adam',
-              loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
-
-model.summary()
-epoci=10
-def learnStupid(epoci):
-    model.fit(x=x_train, y=y_train,epochs=10,validation_split=0.2)
-    print(np.argmax(model.predict(np.array([x_test[10]]))))
-    plt.imshow(x_test[10],cmap=plt.get_cmap('gray'))
-    plt.show()
-    isRight=input("E corect?")
-    if isRight=="nu":
-        epoci+=10
-        learnStupid(epoci)
+import random
+numar=random.randint(1,50)
+nr=int(input("nr:"))
+print("nr:",nr)
+c=1
+while nr!=numar:
+    if nr>numar:
+        c=c+1
+        print("nr este mai mic")
     else:
-        print("Bravo Patratel")
-
-learnStupid(epoci)
-
-
+        c=c+1
+        print("nr este mai mare")
+        nr=int(input("nr:"))
+        print("nr:",nr)
+        print("felicitari,ai ghicit numarul din",c,"incercari")
+        print()
+        print(numar)
